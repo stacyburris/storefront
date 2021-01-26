@@ -25,8 +25,8 @@ function categories(props) {
           ?
           props.products.activateProducts.map((products, idx) => (
             <div key={idx}>
-              <p>{products.price}</p>
-              <p>{products.inStock}</p>
+              <p>Price: {products.price}</p>
+              <p>InStock: {products.inStock}</p>
             </div>
           ))
           : ''}

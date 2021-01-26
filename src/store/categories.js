@@ -21,11 +21,10 @@ let initialState = {
 export const setCategory = (name) => {
   console.log('SET CATEGORY LINE 22', name);
   return {
-    type: 'SWITCH',
+    type: 'CATEGORIES',
     payload: name
   }
 }
-
 
 export const filterProduct = (name) => {
   console.log('FILTER PRODUCT LINE 31', name);
@@ -35,17 +34,18 @@ export const filterProduct = (name) => {
   }
 }
 
+
+// switch statement
 let newState = (state = initialState, action) => {
   let { type, payload } = action;
   switch (type) {
-    case 'SWITCH':
+    case 'CATEGORIES':
       state.activateCategory = action.payload;
       return state;
 
     case 'FILTER':
       state.filterProduct = action.payload;
       let categoryList = state.categoryList.filter((categories) => categories.category === payload);
-      // return { categoryList };
       return { ...state, categoryList };
     default:
       return state;
