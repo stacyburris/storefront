@@ -14,7 +14,8 @@ let initialState = {
     { name: 'Dahlia', category: 'flowers', price: 19.95, inStock: 23 },
     { name: 'Sunflower', category: 'flowers', price: 2.89, inStock: 5 },
   ],
-  activateCategory: ''
+  activateCategory: '',
+  filteredProductsArray: []   /// will send back to products page 
 };
 
 // actions
@@ -26,30 +27,38 @@ export const setCategory = (name) => {
   }
 }
 
-export const filterProduct = (name) => {
-  console.log('FILTER PRODUCT LINE 31', name);
+export const filterProduct = () => {
   return {
-    type: 'FILTER',
-    payload: name
+    type: 'FILTER'
   }
 }
-
-
-// switch statement
+// switch statement // reducer listening for all action types
 let newState = (state = initialState, action) => {
   let { type, payload } = action;
   switch (type) {
     case 'CATEGORIES':
-      state.activateCategory = action.payload;
+      state.activateCategory = action.payload
       return state;
+    // activateCategory: payload
+
 
     case 'FILTER':
-      state.filterProduct = action.payload;
-      let categoryList = state.categoryList.filter((categories) => categories.category === payload);
-      return { ...state, categoryList };
+      let productList = state.products.filter((item) =>
+        item.category === payload
+      )
+      console.log('line 49 inside filter', productList);
+      return { productList };
+    // return {
+    //   ...state,
+    //   filteredProductsArray: state.products.filter((categories) =>
+    //     categories.category === state.activateCategory)
+    //  console.log('Line 46-------', state.filteredProductsArray)
+
+    // return { ...state, filteredProductsArray };
     default:
       return state;
   }
 }
+
 
 export default newState;
