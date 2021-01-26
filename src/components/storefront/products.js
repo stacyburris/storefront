@@ -25,9 +25,8 @@ function categories(props) {
           ?
           props.products.activateProducts.map((products, idx) => (
             <div key={idx}>
-              <h4>{products.name}</h4>
-              <p>{products.description}</p>
               <p>{products.price}</p>
+              <p>{products.inStock}</p>
             </div>
           ))
           : ''}
