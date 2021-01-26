@@ -8,9 +8,9 @@
 
 ### Links
 
-+ [GitHub PR]()
++ [GitHub PR](https://github.com/stacyburris/storefront/pull/1)
 + [StoreFrint Repo](https://github.com/stacyburris/storefront)
-+ [Codesandbox]()
++ [Codesandbox](https://codesandbox.io/s/store-front-xmv7u)
 
 ### Challenge
 
