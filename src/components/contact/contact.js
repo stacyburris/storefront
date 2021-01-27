@@ -17,7 +17,7 @@ function Contact() {
   return (
     <div className="Contact">
       <Typography variant="h4" gutterBottom>
-        Contact Us
+        Contact Us!
       </Typography>
       <form noValidate autoComplete="off">
         <div>
