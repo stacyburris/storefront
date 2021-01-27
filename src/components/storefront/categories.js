@@ -1,48 +1,57 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCategory, filterProduct, newState } from '../../store/categories';
+import { setCategory, filterProduct } from '../../store/categories';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 function Categories(props) {
-  console.log('WHAT ARE MY PROPS-----', props)
-  // console.log(props.categoryType);
   const clickCategory = (name) => {
-    console.log('CLICK CATEGORY:', name);
     props.setCategory(name);
-    // props.filterProduct(name);
+    props.filterProduct(name);
   }
-  // const reset = () => props.reset();
-  //;        
-  // : props.categoryType.categoryList.filterProduct((selection) => {
-  //   <div>
-  //     <p>Price: {selection.price}</p>
-  //     <p>In Stock: {selection.inStock}</p>
-  //   </div>
-  // })}
-  // </div>
-  /* {(!props.categoryType.categoryList.activateCategory) ?  */
+
   return (
     <>
       <h1>Categories</h1>
       <div id="category-list">
-
-        {props.categoryType.categoryList.map((category, idx) => (
+        {props.categories.categoryList.map((category, idx) => (
           <div key={idx}>
-            <p>{category.name}</p>
-            <p>Description: {category.description}</p>
-            <button onClick={() => clickCategory(category.name)}>Pick Category</button>
+            <Card className="category">
+              <CardActionArea>
+                <CardMedia
+                  className="category"
+                  title={category.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {category.name}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button id={idx + 'button'} size="small" color="primary" onClick={() => clickCategory(category.name)}>
+                  View Category
+                  </Button>
+              </CardActions>
+            </Card>
+
           </div>
         ))}
       </div>
     </>
   )
 }
+
 const mapStateToProps = state => ({
-  categoryType: state.category
+  categories: state.category
 })
-
 const mapDispatchToProps = { setCategory, filterProduct };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Categories)
 
 
