@@ -124,8 +124,6 @@ export default (state = initialState, action) => {
       let isCount = state.products.map((item) => {
         if (item.name === payload) {
           item.inStock--;
-          console.log(`${item.name} now has ${item.inStock} in stock`);
-
         }
         return item
       })
@@ -135,8 +133,6 @@ export default (state = initialState, action) => {
       let increaseCount = state.products.map((item) => {
         if (item.name === payload) {
           item.inStock++;
-          console.log(`${item.name} now has ${item.inStock} in stock`);
-
         }
         return item;
       })

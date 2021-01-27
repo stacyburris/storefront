@@ -13,7 +13,7 @@ import { increaseCart } from '../../store/categories'
 
 function SimpleCart(props) {
 
-  const handleClick = item => {
+  const clickCart = item => {
     props.removeFromCart(item.name)
     props.increaseCart(item.name);
   }
@@ -42,7 +42,7 @@ function SimpleCart(props) {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button id={idx + 'button'} size="small" color="primary" onClick={() => handleClick(item)}>
+                <Button id={idx + 'button'} size="small" color="primary" onClick={() => clickCart(item)}>
                   Remove from Cart
           </Button>
               </CardActions>
